@@ -7,10 +7,14 @@
        (product (rest coll)))))
 
 (defn singleton? [coll]
-  (not (seq (rest coll))))
+  (if (not (seq coll))
+    false
+    (not (seq (rest coll)))))
 
 (defn my-last [coll]
-  :-)
+  (if (not (seq (rest coll)))
+    (first coll)
+    (my-last (rest coll))))
 
 (defn max-element [a-seq]
   :-)
