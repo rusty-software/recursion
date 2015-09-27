@@ -81,7 +81,9 @@
     :else false))
 
 (defn my-map [f seq-1 seq-2]
-  [:-])
+  (if (and (seq seq-1) (seq seq-2))
+    (cons (f (first seq-1) (first seq-2)) (my-map f (rest seq-1) (rest seq-2)))
+    '()))
 
 (defn power [n k]
   :-)
