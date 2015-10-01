@@ -117,7 +117,9 @@
     (cons a-seq (tails (rest a-seq)))))
 
 (defn inits [a-seq]
-  [:-])
+  (if (> 1 (count a-seq))
+    (vector '())
+    (cons a-seq (inits (butlast a-seq)))))
 
 (defn rotations [a-seq]
   [:-])
