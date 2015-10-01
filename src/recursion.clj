@@ -92,7 +92,7 @@
 
 (defn fib [n]
   (cond
-    (zero? n)
+    (> 1 n)
     0
 
     (= 1 n)
@@ -102,7 +102,9 @@
     (+ (fib (dec n)) (fib (- n 2)))))
 
 (defn my-repeat [how-many-times what-to-repeat]
-  [:-])
+  (if (> 1 how-many-times)
+    '()
+    (cons what-to-repeat (my-repeat (dec how-many-times) what-to-repeat))))
 
 (defn my-range [up-to]
   [:-])
