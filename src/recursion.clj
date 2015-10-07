@@ -122,7 +122,10 @@
     (cons a-seq (inits (butlast a-seq)))))
 
 (defn rotations [a-seq]
-  [:-])
+  (if (not (seq a-seq))
+    '(())
+    (vec (set (concat (map (fn [items] (concat [ (first a-seq)] items)) (rotations (rest a-seq)))
+                 (map (fn [items] (concat items [ (first a-seq)])) (rotations (rest a-seq))))))))
 
 (defn my-frequencies-helper [freqs a-seq]
   [:-])
