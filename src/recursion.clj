@@ -121,11 +121,15 @@
     (vector '())
     (cons a-seq (inits (butlast a-seq)))))
 
+(defn count-rotations [i a-seq]
+  (if (= i (count a-seq))
+    '()
+    (cons a-seq (count-rotations (inc i) (concat (rest a-seq) (vector (first a-seq)))))))
+
 (defn rotations [a-seq]
   (if (not (seq a-seq))
-    '(())
-    (vec (set (concat (map (fn [items] (concat [ (first a-seq)] items)) (rotations (rest a-seq)))
-                 (map (fn [items] (concat items [ (first a-seq)])) (rotations (rest a-seq))))))))
+    (vector '())
+    (count-rotations 0 a-seq)))
 
 (defn my-frequencies-helper [freqs a-seq]
   [:-])
@@ -153,6 +157,11 @@
 
 (defn split-into-monotonics [a-seq]
   [:-])
+
+#_(if (not (seq a-seq))
+    '(())
+    (vec (set (concat (map (fn [items] (concat [ (first a-seq)] items)) (rotations (rest a-seq)))
+                 (map (fn [items] (concat items [ (first a-seq)])) (rotations (rest a-seq)))))))
 
 (defn permutations [a-set]
   [:-])
