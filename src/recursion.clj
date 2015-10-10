@@ -171,7 +171,12 @@
     [(my-take half-count a-seq) (my-drop half-count a-seq)]))
 
 (defn seq-merge [a-seq b-seq]
-  [:-])
+  (cond
+    (empty? a-seq) b-seq
+    (empty? b-seq) a-seq
+    :else (if (< (first a-seq) (first b-seq))
+            (cons (first a-seq) (seq-merge (rest a-seq) b-seq))
+            (cons (first b-seq) (seq-merge (rest b-seq) a-seq)))))
 
 (defn merge-sort [a-seq]
   [:-])
