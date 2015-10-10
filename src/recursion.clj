@@ -179,7 +179,10 @@
             (cons (first b-seq) (seq-merge (rest b-seq) a-seq)))))
 
 (defn merge-sort [a-seq]
-  [:-])
+  (if (> 2 (count a-seq))
+    a-seq
+    (let [[half1 half2] (halve a-seq)]
+      (seq-merge (merge-sort half1) (merge-sort half2)))))
 
 (defn split-into-monotonics [a-seq]
   [:-])
